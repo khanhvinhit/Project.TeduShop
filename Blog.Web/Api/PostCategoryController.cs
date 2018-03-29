@@ -1,6 +1,8 @@
-﻿using Blog.Model.Models;
+﻿using AutoMapper;
+using Blog.Model.Models;
 using Blog.Service;
 using Blog.Web.Infrastructure.Core;
+using Blog.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
