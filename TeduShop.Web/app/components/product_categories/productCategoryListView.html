@@ -30,7 +30,7 @@
         </div>
         <div class="box-body">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 pull-left ">
                     <div class="input-group">
                         <input type="text" class="form-control" ng-model="keyword" placeholder="Từ khóa">
                         <span class="input-group-btn">
@@ -38,7 +38,11 @@
                         </span>
                     </div><!-- /input-group -->
                 </div>
+                <div class="col-md-6 pull-right">
+                    <button class="btn btn-success pull-right" ui-sref="add_product_category">Thêm mới</button>
+                </div>
             </div>
+            <hr />
             <div class="row">
                 <div class="col-md-12">
                     <table class="table table-bordered">
