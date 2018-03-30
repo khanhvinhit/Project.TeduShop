@@ -25,12 +25,11 @@ namespace TeduShop.Data.Migrations
 
             var user = new ApplicationUser()
             {
-                UserName = "tedu",
-                Email = "tedu.international@gmail.com",
+                UserName = "admin",
+                Email = "khanhvinhit@gmail.com",
                 EmailConfirmed = true,
                 BirthDay = DateTime.Now,
-                FullName = "Technology Education"
-
+                FullName = "Khánh Vinh Sang"
             };
 
             manager.Create(user, "123654$");
@@ -41,10 +40,9 @@ namespace TeduShop.Data.Migrations
                 roleManager.Create(new IdentityRole { Name = "User" });
             }
 
-            var adminUser = manager.FindByEmail("tedu.international@gmail.com");
+            var adminUser = manager.FindByEmail("khanhvinhit@gmail.com");
 
             manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
-
         }
     }
 }
