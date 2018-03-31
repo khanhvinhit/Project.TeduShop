@@ -4,6 +4,7 @@
     angular.module('tedushop.products', ['tedushop.common']).config(config);
 
     config.$inject = ['$stateProvider', '$urlRouterProvider'];
+
     function config($stateProvider, $urlRouterProvider) {
         $stateProvider.state('products', {
             url: "/products",

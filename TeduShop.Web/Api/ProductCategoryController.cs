@@ -132,6 +132,7 @@ namespace TeduShop.Web.Api
 
                     dbProductCategory.UpdateProductCategory(productCategoryVm);
                     dbProductCategory.UpdatedDate = DateTime.Now;
+
                     _productCategoryService.Update(dbProductCategory);
                     _productCategoryService.Save();
 

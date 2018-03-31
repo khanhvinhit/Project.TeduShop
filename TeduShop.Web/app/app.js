@@ -2,13 +2,13 @@
 
 (function () {
     angular.module('tedushop',
-        [
-            'tedushop.product_categories',
-            'tedushop.products',
-            'tedushop.common'
-        ]).config(config);
+        ['tedushop.products',
+         'tedushop.product_categories',
+         'tedushop.common'])
+        .config(config);
 
     config.$inject = ['$stateProvider', '$urlRouterProvider'];
+
     function config($stateProvider, $urlRouterProvider) {
         $stateProvider.state('home', {
             url: "/admin",
