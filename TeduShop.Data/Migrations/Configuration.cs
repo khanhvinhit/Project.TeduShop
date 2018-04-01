@@ -1,5 +1,6 @@
 ﻿namespace TeduShop.Data.Migrations
 {
+    using Common;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Model.Models;
@@ -59,6 +60,22 @@
                    new ProductCategory() { Name="Mỹ phẩm 2",Alias="my-pham",Status=true }
             };
                 context.ProductCategories.AddRange(listProductCategory);
+                context.SaveChanges();
+            }
+        }
+
+        private void CreateFooter(TeduShop.Data.TeduShopDbContext context)
+        {
+            if (context.Footers.Count(x => x.ID == CommonConstants.DefaultFooterID) == 0)
+            {
+                List<Footer> listFooterCategory = new List<Footer>()
+            {
+                new Footer() { ID="Điện lạnh 2",Content="dien-lanh"},
+                 new Footer() { ID="Viễn thông 2",Content="vien-thong" },
+                  new Footer() { ID="Đồ gia dụng 2",Content="do-gia-dung"},
+                   new Footer() { ID="Mỹ phẩm 2",Content="my-pham"}
+            };
+                context.Footers.AddRange(listFooterCategory);
                 context.SaveChanges();
             }
         }
