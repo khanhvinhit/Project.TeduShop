@@ -18,7 +18,7 @@
 
         protected override void Seed(TeduShop.Data.TeduShopDbContext context)
         {
-            CreateProductCategorySample(context);
+            //CreateProductCategorySample(context);
             //  This method will be called after migrating to the latest version.
 
             //var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new TeduShopDbContext()));
