@@ -18,7 +18,7 @@
 
         protected override void Seed(TeduShop.Data.TeduShopDbContext context)
         {
-            //CreateProductCategorySample(context);
+            CreateProductCategorySample(context);
             //  This method will be called after migrating to the latest version.
 
             //var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new TeduShopDbContext()));
@@ -53,10 +53,10 @@
             {
                 List<ProductCategory> listProductCategory = new List<ProductCategory>()
             {
-                new ProductCategory() { Name="Điện lạnh",Alias="dien-lanh",Status=true },
-                 new ProductCategory() { Name="Viễn thông",Alias="vien-thong",Status=true },
-                  new ProductCategory() { Name="Đồ gia dụng",Alias="do-gia-dung",Status=true },
-                   new ProductCategory() { Name="Mỹ phẩm",Alias="my-pham",Status=true }
+                new ProductCategory() { Name="Điện lạnh 2",Alias="dien-lanh",Status=true },
+                 new ProductCategory() { Name="Viễn thông 2",Alias="vien-thong",Status=true },
+                  new ProductCategory() { Name="Đồ gia dụng 2",Alias="do-gia-dung",Status=true },
+                   new ProductCategory() { Name="Mỹ phẩm 2",Alias="my-pham",Status=true }
             };
                 context.ProductCategories.AddRange(listProductCategory);
                 context.SaveChanges();
