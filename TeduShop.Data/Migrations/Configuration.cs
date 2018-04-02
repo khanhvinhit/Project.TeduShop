@@ -20,6 +20,7 @@
         protected override void Seed(TeduShop.Data.TeduShopDbContext context)
         {
             CreateProductCategorySample(context);
+            CreateSlider(context);
             //  This method will be called after migrating to the latest version.
 
             //var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new TeduShopDbContext()));
@@ -68,14 +69,38 @@
         {
             if (context.Footers.Count(x => x.ID == CommonConstants.DefaultFooterID) == 0)
             {
-                List<Footer> listFooterCategory = new List<Footer>()
+                string content = "";
+            }
+        }
+
+        private void CreateSlider(TeduShop.Data.TeduShopDbContext context)
+        {
+            if (context.Slides.Count() == 0)
             {
-                new Footer() { ID="Điện lạnh 2",Content="dien-lanh"},
-                 new Footer() { ID="Viễn thông 2",Content="vien-thong" },
-                  new Footer() { ID="Đồ gia dụng 2",Content="do-gia-dung"},
-                   new Footer() { ID="Mỹ phẩm 2",Content="my-pham"}
-            };
-                context.Footers.AddRange(listFooterCategory);
+                List<Slide> listSlide = new List<Slide>()
+                {
+                    new Slide() {
+                        Name ="Slide 1",
+                        DisplayOrder =1,
+                        Status =true,
+                        Url ="#",
+                        Image ="/Assets/client/images/bag.jpg",
+                        Content = @"<h2>FLAT 50% 0FF</h2>
+                                <label>FOR ALL PURCHASE <b>VALUE</b></label>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </ p >
+                                <span class=""on-get"">GET NOW</span>" },
+                    new Slide() {
+                        Name ="Slide 2",
+                        DisplayOrder =2,
+                        Status =true,
+                        Url ="#",
+                        Image ="/Assets/client/images/bag1.jpg",
+                        Content=@"<h2>FLAT 50% 0FF</h2>
+                                <label>FOR ALL PURCHASE <b>VALUE</b></label>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et </ p >
+                                <span class=""on-get"">GET NOW</span>"},
+                };
+                context.Slides.AddRange(listSlide);
                 context.SaveChanges();
             }
         }

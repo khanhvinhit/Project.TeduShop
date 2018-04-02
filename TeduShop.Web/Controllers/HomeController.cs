@@ -13,24 +13,37 @@ namespace TeduShop.Web.Controllers
     public class HomeController : Controller
     {
         private IProductCategoryService _productCategoryService;
-        private ICommonService _footerService;
+        private IProductService _productService;
+        private ICommonService _commonService;
 
-        public HomeController(IProductCategoryService productCategoryService, ICommonService footerService)
+        public HomeController(IProductCategoryService productCategoryService, ICommonService footerService, IProductService productService)
         {
             this._productCategoryService = productCategoryService;
-            this._footerService = footerService;
+            this._commonService = footerService;
+            this._productService = productService;
         }
 
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            var slideModel = _commonService.GetSlides();
+            var slideView = Mapper.Map<IEnumerable<Slide>, IEnumerable<SlideViewModel>>(slideModel);
+            var homeViewModel = new HomeViewModel();
+            homeViewModel.Slides = slideView;
+
+            var lastestProductModel = _productService.GetLastest(3);
+            var topSaleProductModel = _productService.GetHotProduct(3);
+            var lastestProductViewModel = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(lastestProductModel);
+            var topSaleProductViewModel = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(topSaleProductModel);
+            homeViewModel.LastestProducts = lastestProductViewModel;
+            homeViewModel.TopSaleProducts = topSaleProductViewModel;
+            return View(homeViewModel);
         }
 
         [ChildActionOnly]
         public ActionResult Footer()
         {
-            var footerModel = _footerService.GetFooter();
+            var footerModel = _commonService.GetFooter();
             var footerViewModel = Mapper.Map<Footer, FooterViewModel>(footerModel);
             return PartialView(footerViewModel);
         }
