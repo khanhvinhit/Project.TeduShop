@@ -15,31 +15,31 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!--//theme-style-->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link href="~/Assets/admin/libs/fontawesome/css/font-awesome.min.css" rel="stylesheet" />
     <!--fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
     <!--//fonts-->
     <script src="~/Assets/client/js/jquery.min.js"></script>
     <!--script-->
+    <style>
+        .disabled {
+            pointer-events: none;
+            //This makes it not clickable opacity:0.6;
+            //This grays it out to look disabled;
+        }
+    </style>
 </head>
 <body>
     <!--header-->
     @{ Html.RenderAction("Header", "Home");}
-    <!---->
+    <!--Body-->
     <div class="container">
         @RenderBody()
-    </div>
-    </a>
-    <!---->
-    @RenderSection("homeProducts", required: false)
-
-    <div class="clearfix"> </div>
-    </div>
-    @{ Html.RenderAction("Category", "Home");}
-    <div class="clearfix"> </div>
+        @{ Html.RenderAction("Category", "Home");}
     </div>
 
-    <!---->
     @{Html.RenderAction("Footer", "Home");}
+    <div class="clearfix"> </div>
     @RenderSection("footerJS", required: false)
 </body>
 </html>
