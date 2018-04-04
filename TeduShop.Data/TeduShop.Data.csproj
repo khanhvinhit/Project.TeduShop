@@ -92,6 +92,10 @@
     <Compile Include="Migrations\201804020454090_AddContentToSlider.Designer.cs">
       <DependentUpon>201804020454090_AddContentToSlider.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804041258318_AddQuantityToProduct.cs" />
+    <Compile Include="Migrations\201804041258318_AddQuantityToProduct.Designer.cs">
+      <DependentUpon>201804041258318_AddQuantityToProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
@@ -149,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804020454090_AddContentToSlider.resx">
       <DependentUpon>201804020454090_AddContentToSlider.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804041258318_AddQuantityToProduct.resx">
+      <DependentUpon>201804041258318_AddQuantityToProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

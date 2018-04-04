@@ -44,9 +44,16 @@ namespace TeduShop.Web
             routes.MapRoute(
                 name: "Product",
                 url: "{alias}.p-{id}.html",
-                defaults: new { controller = "Product", action = "Detalt", id = UrlParameter.Optional },
+                defaults: new { controller = "Product", action = "Detail", id = UrlParameter.Optional },
                 namespaces: new string[] { "TeduShop.Web.Controllers" }
             );
+
+            routes.MapRoute(
+             name: "TagList",
+             url: "tag/{id}.html",
+             defaults: new { controller = "Product", action = "ListByTag", id = UrlParameter.Optional },
+               namespaces: new string[] { "TeduShop.Web.Controllers" }
+         );
 
             routes.MapRoute(
                 name: "Default",
