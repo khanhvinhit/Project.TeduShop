@@ -24,6 +24,7 @@
             CreateProductCategorySample(context);
             CreateSlider(context);
             CreatePage(context);
+            CreateContactDetail(context);
             //  This method will be called after migrating to the latest version.
 
             //var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new TeduShopDbContext()));
@@ -122,6 +123,41 @@
                         Status = true
                     };
                     context.Pages.Add(page);
+                    context.SaveChanges();
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    foreach (var eve in ex.EntityValidationErrors)
+                    {
+                        Trace.WriteLine($"Entity of type \"{eve.Entry.Entity.GetType().Name}\" in state \"{eve.Entry.State}\" has the following validation error.");
+                        foreach (var ve in eve.ValidationErrors)
+                        {
+                            Trace.WriteLine($"- Property: \"{ve.PropertyName}\", Error: \"{ve.ErrorMessage}\"");
+                        }
+                    }
+                }
+            }
+        }
+
+        private void CreateContactDetail(TeduShopDbContext context)
+        {
+            if (context.ContactDetails.Count() == 0)
+            {
+                try
+                {
+                    var contactDetail = new TeduShop.Model.Models.ContactDetail()
+                    {
+                        Name = "Shop thời trang TEDU",
+                        Address = "Ngõ 77 Xuân La",
+                        Email = "tedu@gmail.com",
+                        Lat = 21.0633645,
+                        Lng = 105.8053274,
+                        Phone = "095423233",
+                        Website = "http://tedu.com.vn",
+                        Other = "",
+                        Status = true
+                    };
+                    context.ContactDetails.Add(contactDetail);
                     context.SaveChanges();
                 }
                 catch (DbEntityValidationException ex)
