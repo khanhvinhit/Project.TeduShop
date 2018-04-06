@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layouts.cshtml";
+
 }
 @section footerJs{
     <script src="/Assets/client/js/jquery.wmuSlider.js"></script>
@@ -10,6 +11,7 @@
     </script>
 }
 <div class="shoes-grid">
+
     <div class="wrap-in">
         <div class="wmuSlider example1 slide-grid">
             <div class="wmuSliderWrapper">
@@ -47,15 +49,15 @@
         @foreach (var product in Model.LastestProducts)
         {
             var url = "/" + product.Alias + ".p-" + product.ID + ".html";
-            <div class="col-md-4 chain-grid grid-top-chain" style="margin:0 1%">
-                <a href="@url"><img class="img-responsive chain" src="@product.Image" style="width:180px;height:250px" /></a>
+            <div class="col-md-4 chain-grid grid-top-chain">
+                <a href="@url"><img class="img-responsive chain" src="@product.Image" /></a>
                 <span class="star"> </span>
                 <div class="grid-chain-bottom">
                     <h6><a href="@url">@product.Name</a></h6>
                     <div class="star-price">
                         <div class="dolor-grid">
                             @if (product.PromotionPrice.HasValue)
-                            {
+                {
                                 <span class="actual">@product.PromotionPrice.Value.ToString("N0")</span>
                             }
                             <span class="reducedfrom">@product.Price.ToString("N0")</span>
@@ -72,12 +74,13 @@
                                 <label for="rating-input-1-1" class="rating-star"> </label>
                             </span>
                         </div>
-                        <a class="now-get get-cart" href="#">Mua hàng</a>
+                        <a class="now-get get-cart" href="#" data-id="@product.ID" id="btnAddToCart">Mua hàng</a>
                         <div class="clearfix"> </div>
                     </div>
                 </div>
             </div>
         }
+
         <div class="clearfix"> </div>
     </div>
     <div class="products">
@@ -88,15 +91,15 @@
         @foreach (var product in Model.TopSaleProducts)
         {
             var url = "/" + product.Alias + ".p-" + product.ID + ".html";
-            <div class="col-md-4 chain-grid grid-top-chain" style="margin:0 1%">
-                <a href="@url"><img class="img-responsive chain" src="@product.Image" style="width:180px;height:250px" /></a>
+            <div class="col-md-4 chain-grid grid-top-chain">
+                <a href="@url"><img class="img-responsive chain" src="@product.Image" /></a>
                 <span class="star"> </span>
                 <div class="grid-chain-bottom">
                     <h6><a href="@url">@product.Name</a></h6>
                     <div class="star-price">
                         <div class="dolor-grid">
                             @if (product.PromotionPrice.HasValue)
-                            {
+                {
                                 <span class="actual">@product.PromotionPrice.Value.ToString("N0")</span>
                             }
                             <span class="reducedfrom">@product.Price.ToString("N0")</span>
@@ -113,7 +116,7 @@
                                 <label for="rating-input-1-1" class="rating-star"> </label>
                             </span>
                         </div>
-                        <a class="now-get get-cart" href="#">Mua hàng</a>
+                        <a class="now-get get-cart" href="#" data-id="@product.ID" id="btnAddToCart">Mua hàng</a>
                         <div class="clearfix"> </div>
                     </div>
                 </div>
