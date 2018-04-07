@@ -3,7 +3,10 @@
 (function () {
     angular.module('tedushop',
         ['tedushop.products',
+         'tedushop.application_groups',
          'tedushop.product_categories',
+         'tedushop.application_roles',
+         'tedushop.application_users',
          'tedushop.common'])
         .config(config)
         .config(configAuthentication);
@@ -34,9 +37,11 @@
         $httpProvider.interceptors.push(function ($q, $location) {
             return {
                 request: function (config) {
+
                     return config;
                 },
                 requestError: function (rejection) {
+
                     return $q.reject(rejection);
                 },
                 response: function (response) {
@@ -47,6 +52,7 @@
                     return response;
                 },
                 responseError: function (rejection) {
+
                     if (rejection.status == "401") {
                         $location.path('/login');
                     }

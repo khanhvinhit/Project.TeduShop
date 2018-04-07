@@ -42,7 +42,9 @@
                     $scope.pagePlus = function (count) {
                         return +$scope.page + count;
                     }
+
                 }]
         }
     }
+
 })(angular.module('tedushop.common'));

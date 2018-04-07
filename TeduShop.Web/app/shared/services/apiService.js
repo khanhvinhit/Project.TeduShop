@@ -24,6 +24,7 @@
                 else if (failure != null) {
                     failure(error);
                 }
+
             });
         }
         function post(url, data, success, failure) {
@@ -38,6 +39,7 @@
                 else if (failure != null) {
                     failure(error);
                 }
+
             });
         }
         function put(url, data, success, failure) {
@@ -52,6 +54,7 @@
                 else if (failure != null) {
                     failure(error);
                 }
+
             });
         }
         function get(url, params, success, failure) {
