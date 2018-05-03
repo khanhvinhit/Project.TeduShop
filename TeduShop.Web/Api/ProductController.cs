@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web;
 using System.Web.Http;
 using System.Web.Script.Serialization;
 using TeduShop.Model.Models;
@@ -20,7 +19,6 @@ namespace TeduShop.Web.Api
     public class ProductController : ApiControllerBase
     {
         #region Initialize
-
         private IProductService _productService;
 
         public ProductController(IErrorService errorService, IProductService productService)
@@ -29,7 +27,7 @@ namespace TeduShop.Web.Api
             this._productService = productService;
         }
 
-        #endregion Initialize
+        #endregion
 
         [Route("getallparents")]
         [HttpGet]
@@ -45,7 +43,6 @@ namespace TeduShop.Web.Api
                 return response;
             });
         }
-
         [Route("getbyid/{id:int}")]
         [HttpGet]
         public HttpResponseMessage GetById(HttpRequestMessage request, int id)
@@ -74,7 +71,7 @@ namespace TeduShop.Web.Api
                 totalRow = model.Count();
                 var query = model.OrderByDescending(x => x.CreatedDate).Skip(page * pageSize).Take(pageSize);
 
-                var responseData = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(query);
+                var responseData = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(query.AsEnumerable());
 
                 var paginationSet = new PaginationSet<ProductViewModel>()
                 {
@@ -87,6 +84,7 @@ namespace TeduShop.Web.Api
                 return response;
             });
         }
+
 
         [Route("create")]
         [HttpPost]
@@ -171,7 +169,6 @@ namespace TeduShop.Web.Api
                 return response;
             });
         }
-
         [Route("deletemulti")]
         [HttpDelete]
         [AllowAnonymous]

@@ -5,6 +5,7 @@ using System.Web;
 
 namespace TeduShop.Web.Models
 {
+    [Serializable]
     public class ProductViewModel
     {
         public int ID { set; get; }
@@ -52,6 +53,8 @@ namespace TeduShop.Web.Models
         public string Tags { set; get; }
 
         public int Quantity { set; get; }
+
+        public decimal OriginalPrice { set; get; }
         public virtual ProductCategoryViewModel ProductCategory { set; get; }
     }
 }

@@ -13,8 +13,7 @@ namespace TeduShop.Web.Api
     [Authorize]
     public class HomeController : ApiControllerBase
     {
-        private IErrorService _errorService;
-
+        IErrorService _errorService;
         public HomeController(IErrorService errorService) : base(errorService)
         {
             this._errorService = errorService;

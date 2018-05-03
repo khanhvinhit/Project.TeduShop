@@ -22,16 +22,18 @@ namespace TeduShop.Web.App_Start
         {
             // Configure the db context, user manager and signin manager to use a single instance per request
             app.CreatePerOwinContext(TeduShopDbContext.Create);
+
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
             app.CreatePerOwinContext<UserManager<ApplicationUser>>(CreateManager);
-            //
+
             app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions
             {
                 TokenEndpointPath = new PathString("/oauth/token"),
                 Provider = new AuthorizationServerProvider(),
                 AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
                 AllowInsecureHttp = true,
+
             });
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
 
@@ -43,7 +45,7 @@ namespace TeduShop.Web.App_Start
                 Provider = new CookieAuthenticationProvider
                 {
                     // Enables the application to validate the security stamp when the user logs in.
-                    // This is a security feature which is used when you change a password or add an external login to your account.
+                    // This is a security feature which is used when you change a password or add an external login to your account.  
                     OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUser>(
                         validateInterval: TimeSpan.FromMinutes(30),
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
@@ -70,14 +72,12 @@ namespace TeduShop.Web.App_Start
             //    ClientSecret = ""
             //});
         }
-
         public class AuthorizationServerProvider : OAuthAuthorizationServerProvider
         {
             public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
             {
                 context.Validated();
             }
-
             public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
             {
                 var allowedOrigin = context.OwinContext.Get<string>("as:clientAllowedOrigin");
@@ -114,6 +114,8 @@ namespace TeduShop.Web.App_Start
             }
         }
 
+
+
         private static UserManager<ApplicationUser> CreateManager(IdentityFactoryOptions<UserManager<ApplicationUser>> options, IOwinContext context)
         {
             var userStore = new UserStore<ApplicationUser>(context.Get<TeduShopDbContext>());
@@ -121,4 +123,6 @@ namespace TeduShop.Web.App_Start
             return owinManager;
         }
     }
+
+ 
 }

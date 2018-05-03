@@ -12,19 +12,20 @@ namespace TeduShop.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private IProductCategoryService _productCategoryService;
-        private IProductService _productService;
-        private ICommonService _commonService;
+        IProductCategoryService _productCategoryService;
+        IProductService _productService;
+        ICommonService _commonService;
 
-        public HomeController(IProductCategoryService productCategoryService, ICommonService footerService, IProductService productService)
+        public HomeController(IProductCategoryService productCategoryService,
+            IProductService productService,
+            ICommonService commonService)
         {
-            this._productCategoryService = productCategoryService;
-            this._commonService = footerService;
-            this._productService = productService;
+            _productCategoryService = productCategoryService;
+            _commonService = commonService;
+            _productService = productService;
         }
 
-        // GET: Home
-        //[OutputCache(Duration = 60, Location = System.Web.UI.OutputCacheLocation.Client)]
+        [OutputCache(Duration = 60, Location = System.Web.UI.OutputCacheLocation.Client)]
         public ActionResult Index()
         {
             var slideModel = _commonService.GetSlides();
@@ -41,8 +42,9 @@ namespace TeduShop.Web.Controllers
             return View(homeViewModel);
         }
 
+
         [ChildActionOnly]
-        //[OutputCache(Duration = 3600)]
+        [OutputCache(Duration = 3600)]
         public ActionResult Footer()
         {
             var footerModel = _commonService.GetFooter();
@@ -51,14 +53,13 @@ namespace TeduShop.Web.Controllers
         }
 
         [ChildActionOnly]
-        //[OutputCache(Duration = 3600)]
         public ActionResult Header()
         {
             return PartialView();
         }
 
         [ChildActionOnly]
-        //[OutputCache(Duration = 3600)]
+        [OutputCache(Duration = 3600)]
         public ActionResult Category()
         {
             var model = _productCategoryService.GetAll();

@@ -19,6 +19,7 @@
 
         function loadProductDetail() {
             apiService.get('api/product/getbyid/' + $stateParams.id, null, function (result) {
+                console.log(result.data);
                 $scope.product = result.data;
                 $scope.moreImages = JSON.parse($scope.product.MoreImages);
             }, function (error) {
@@ -57,10 +58,12 @@
                 $scope.$apply(function () {
                     $scope.moreImages.push(fileUrl);
                 })
+
             }
             finder.popup();
         }
         loadProductCategory();
         loadProductDetail();
     }
+
 })(angular.module('tedushop.products'));

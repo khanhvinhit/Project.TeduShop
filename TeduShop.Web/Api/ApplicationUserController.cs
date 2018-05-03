@@ -23,7 +23,6 @@ namespace TeduShop.Web.Api
         private ApplicationUserManager _userManager;
         private IApplicationGroupService _appGroupService;
         private IApplicationRoleService _appRoleService;
-
         public ApplicationUserController(
             IApplicationGroupService appGroupService,
             IApplicationRoleService appRoleService,
@@ -35,10 +34,9 @@ namespace TeduShop.Web.Api
             _appGroupService = appGroupService;
             _userManager = userManager;
         }
-
         [Route("getlistpaging")]
         [HttpGet]
-        [Authorize(Roles = "ViewUser")]
+        [Authorize(Roles ="ViewUser")]
         public HttpResponseMessage GetListPaging(HttpRequestMessage request, int page, int pageSize, string filter = null)
         {
             return CreateHttpResponse(request, () =>
@@ -69,6 +67,7 @@ namespace TeduShop.Web.Api
         {
             if (string.IsNullOrEmpty(id))
             {
+
                 return request.CreateErrorResponse(HttpStatusCode.BadRequest, nameof(id) + " không có giá trị.");
             }
             var user = _userManager.FindByIdAsync(id);
@@ -83,6 +82,7 @@ namespace TeduShop.Web.Api
                 applicationUserViewModel.Groups = Mapper.Map<IEnumerable<ApplicationGroup>, IEnumerable<ApplicationGroupViewModel>>(listGroup);
                 return request.CreateResponse(HttpStatusCode.OK, applicationUserViewModel);
             }
+
         }
 
         [HttpPost]
@@ -101,7 +101,7 @@ namespace TeduShop.Web.Api
                     if (result.Succeeded)
                     {
                         var listAppUserGroup = new List<ApplicationUserGroup>();
-                        foreach (var group in applicationUserViewModel.Groups)
+                        foreach(var group in applicationUserViewModel.Groups)
                         {
                             listAppUserGroup.Add(new ApplicationUserGroup()
                             {
@@ -119,7 +119,9 @@ namespace TeduShop.Web.Api
                         _appGroupService.AddUserToGroups(listAppUserGroup, newAppUser.Id);
                         _appGroupService.Save();
 
+                      
                         return request.CreateResponse(HttpStatusCode.OK, applicationUserViewModel);
+
                     }
                     else
                         return request.CreateErrorResponse(HttpStatusCode.BadRequest, string.Join(",", result.Errors));
@@ -172,6 +174,7 @@ namespace TeduShop.Web.Api
                         _appGroupService.AddUserToGroups(listAppUserGroup, applicationUserViewModel.Id);
                         _appGroupService.Save();
                         return request.CreateResponse(HttpStatusCode.OK, applicationUserViewModel);
+
                     }
                     else
                         return request.CreateErrorResponse(HttpStatusCode.BadRequest, string.Join(",", result.Errors));
@@ -189,7 +192,7 @@ namespace TeduShop.Web.Api
 
         [HttpDelete]
         [Route("delete")]
-        [Authorize(Roles = "DeleteUser")]
+        [Authorize(Roles ="DeleteUser")]
         public async Task<HttpResponseMessage> Delete(HttpRequestMessage request, string id)
         {
             var appUser = await _userManager.FindByIdAsync(id);
@@ -199,5 +202,6 @@ namespace TeduShop.Web.Api
             else
                 return request.CreateErrorResponse(HttpStatusCode.OK, string.Join(",", result.Errors));
         }
+
     }
 }

@@ -27,8 +27,8 @@ namespace TeduShop.Web.Infrastructure.Extensions
             postCategory.MetaKeyword = postCategoryVm.MetaKeyword;
             postCategory.MetaDescription = postCategoryVm.MetaDescription;
             postCategory.Status = postCategoryVm.Status;
-        }
 
+        }
         public static void UpdateProductCategory(this ProductCategory productCategory, ProductCategoryViewModel productCategoryVm)
         {
             productCategory.ID = productCategoryVm.ID;
@@ -47,8 +47,8 @@ namespace TeduShop.Web.Infrastructure.Extensions
             productCategory.MetaKeyword = productCategoryVm.MetaKeyword;
             productCategory.MetaDescription = productCategoryVm.MetaDescription;
             productCategory.Status = productCategoryVm.Status;
-        }
 
+        }
         public static void UpdatePost(this Post post, PostViewModel postVm)
         {
             post.ID = postVm.ID;
@@ -96,6 +96,7 @@ namespace TeduShop.Web.Infrastructure.Extensions
             product.Status = productVm.Status;
             product.Tags = productVm.Tags;
             product.Quantity = productVm.Quantity;
+            product.OriginalPrice = productVm.OriginalPrice;
         }
 
         public static void UpdateFeedback(this Feedback feedback, FeedbackViewModel feedbackVm)
@@ -136,9 +137,9 @@ namespace TeduShop.Web.Infrastructure.Extensions
             appRole.Name = appRoleViewModel.Name;
             appRole.Description = appRoleViewModel.Description;
         }
-
         public static void UpdateUser(this ApplicationUser appUser, ApplicationUserViewModel appUserViewModel, string action = "add")
         {
+
             appUser.Id = appUserViewModel.Id;
             appUser.FullName = appUserViewModel.FullName;
             appUser.BirthDay = appUserViewModel.BirthDay;

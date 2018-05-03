@@ -10,11 +10,11 @@
                 address: "required",
                 email: {
                     required: true,
-                    email: true
+                    email:true
                 },
                 phone: {
                     required: true,
-                    number: true
+                    number:true
                 }
             },
             messages: {
@@ -40,6 +40,7 @@
             var productid = parseInt($(this).data('id'));
             var price = parseFloat($(this).data('price'));
             if (isNaN(quantity) == false) {
+
                 var amount = quantity * price;
 
                 $('#amount_' + productid).text(numeral(amount).format('0,0'));
@@ -50,7 +51,9 @@
 
             $('#lblTotalOrder').text(numeral(cart.getTotalOrder()).format('0,0'));
 
+
             cart.updateAll();
+
         });
         $('#btnContinue').off('click').on('click', function (e) {
             e.preventDefault();
@@ -80,7 +83,9 @@
             if (isValid) {
                 cart.createOrder();
             }
+           
         });
+
     },
     getLoginUser: function () {
         $.ajax({
@@ -124,6 +129,7 @@
                     setTimeout(function () {
                         $('#cartContent').html('Cảm ơn bạn đã đặt hàng thành công. Chúng tôi sẽ liên hệ sớm nhất.');
                     }, 2000);
+
                 }
             }
         });
@@ -144,6 +150,7 @@
             success: function (response) {
                 if (response.status) {
                     cart.loadData();
+
                 }
             }
         });

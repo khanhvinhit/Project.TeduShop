@@ -26,5 +26,6 @@ namespace TeduShop.Web.Models
 
         [Required(ErrorMessage = "Bạn cần nhập số điện thoại.")]
         public string PhoneNumber { set; get; }
+
     }
 }

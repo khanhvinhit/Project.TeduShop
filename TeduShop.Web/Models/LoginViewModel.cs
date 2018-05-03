@@ -8,7 +8,7 @@ namespace TeduShop.Web.Models
 {
     public class LoginViewModel
     {
-        [Required(ErrorMessage = "Bạn cần nhập tài khoản")]
+        [Required(ErrorMessage ="Bạn cần nhập tài khoản")]
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "Bạn cần nhập mật khẩu")]

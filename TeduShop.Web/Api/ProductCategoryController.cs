@@ -5,12 +5,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Script.Serialization;
 using TeduShop.Model.Models;
 using TeduShop.Service;
 using TeduShop.Web.Infrastructure.Core;
-using TeduShop.Web.Infrastructure.Extensions;
 using TeduShop.Web.Models;
+using TeduShop.Web.Infrastructure.Extensions;
+using System.Web.Script.Serialization;
 
 namespace TeduShop.Web.Api
 {
@@ -19,7 +19,6 @@ namespace TeduShop.Web.Api
     public class ProductCategoryController : ApiControllerBase
     {
         #region Initialize
-
         private IProductCategoryService _productCategoryService;
 
         public ProductCategoryController(IErrorService errorService, IProductCategoryService productCategoryService)
@@ -28,7 +27,7 @@ namespace TeduShop.Web.Api
             this._productCategoryService = productCategoryService;
         }
 
-        #endregion Initialize
+        #endregion
 
         [Route("getallparents")]
         [HttpGet]
@@ -44,7 +43,6 @@ namespace TeduShop.Web.Api
                 return response;
             });
         }
-
         [Route("getbyid/{id:int}")]
         [HttpGet]
         public HttpResponseMessage GetById(HttpRequestMessage request, int id)
@@ -86,6 +84,7 @@ namespace TeduShop.Web.Api
                 return response;
             });
         }
+
 
         [Route("create")]
         [HttpPost]
@@ -169,7 +168,6 @@ namespace TeduShop.Web.Api
                 return response;
             });
         }
-
         [Route("deletemulti")]
         [HttpDelete]
         [AllowAnonymous]

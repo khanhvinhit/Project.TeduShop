@@ -3,6 +3,7 @@
 (function (app) {
     app.factory('commonService', commonService);
 
+
     function commonService() {
         return {
             getSeoTitle: getSeoTitle
@@ -37,5 +38,6 @@
 
             return slug;
         }
+
     }
 })(angular.module('tedushop.common'));

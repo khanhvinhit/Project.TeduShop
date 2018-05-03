@@ -1,7 +1,7 @@
 ﻿(function (app) {
     app.controller('productAddController', productAddController);
 
-    productAddController.$inject = ['apiService', '$scope', 'notificationService', '$state', 'commonService'];
+    productAddController.$inject = ['apiService', '$scope', 'notificationService', '$state','commonService'];
 
     function productAddController(apiService, $scope, notificationService, $state, commonService) {
         $scope.product = {
@@ -20,7 +20,9 @@
             $scope.product.Alias = commonService.getSeoTitle($scope.product.Name);
         }
 
+
         function AddProduct() {
+
             $scope.product.MoreImages = JSON.stringify($scope.moreImages)
             apiService.post('api/product/create', $scope.product,
                 function (result) {
@@ -55,9 +57,11 @@
                 $scope.$apply(function () {
                     $scope.moreImages.push(fileUrl);
                 })
+             
             }
             finder.popup();
         }
         loadProductCategory();
     }
+
 })(angular.module('tedushop.products'));

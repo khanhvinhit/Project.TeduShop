@@ -7,7 +7,7 @@ namespace TeduShop.Web.Models
 {
     public class FooterViewModel
     {
-        public string ID { get; set; }
-        public string Content { get; set; }
+        public string ID { set; get; }
+        public string Content { set; get; }
     }
 }

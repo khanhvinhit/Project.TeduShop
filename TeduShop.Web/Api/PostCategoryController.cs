@@ -15,7 +15,7 @@ namespace TeduShop.Web.Api
     [Authorize]
     public class PostCategoryController : ApiControllerBase
     {
-        private IPostCategoryService _postCategoryService;
+        IPostCategoryService _postCategoryService;
 
         public PostCategoryController(IErrorService errorService, IPostCategoryService postCategoryService) :
             base(errorService)
@@ -57,6 +57,7 @@ namespace TeduShop.Web.Api
                     _postCategoryService.Save();
 
                     response = request.CreateResponse(HttpStatusCode.Created, category);
+
                 }
                 return response;
             });
@@ -80,6 +81,7 @@ namespace TeduShop.Web.Api
                     _postCategoryService.Save();
 
                     response = request.CreateResponse(HttpStatusCode.OK);
+
                 }
                 return response;
             });
@@ -100,6 +102,7 @@ namespace TeduShop.Web.Api
                     _postCategoryService.Save();
 
                     response = request.CreateResponse(HttpStatusCode.OK);
+
                 }
                 return response;
             });
